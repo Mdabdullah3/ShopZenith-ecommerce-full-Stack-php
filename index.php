@@ -166,8 +166,8 @@
   <?php include "src/Home/Testimonial.php"  ?>
 
   <!-- Start Footer Section -->
-  <?php
-  include "shared/footer.php";
+  <?php $img = "assets/images/sofa.png";
+  include  "shared/footer.php";
   ?>
 
   <script src="assets/js/bootstrap.bundle.min.js"></script>

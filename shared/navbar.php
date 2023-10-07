@@ -17,9 +17,8 @@
             </ul>
 
             <ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
-                <li>
-                    <a class="nav-link" href="#"><img src="images/user.svg" /></a>
-                </li>
+                <li><a class="nav-link" href="/New%20projects/src/Account/Login.php">Login /</a></li>
+                <li><a class="nav-link" style="margin-left: -30px;" href="/New%20projects/src/Account/SignUp.php">Register</a></li>
                 <li>
                     <a class="nav-link" href="cart.html"><img src="images/cart.svg" /></a>
                 </li>

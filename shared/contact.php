@@ -97,6 +97,9 @@
             </div>
         </div>
     </div>
+    <?php $img = "../assets/images/sofa.png";
+    include  "footer.php";
+    ?>
 </body>
 
 </html>
