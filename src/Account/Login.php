@@ -34,7 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 header("location: /New%20projects/index.php");
                 exit;
             } elseif ($row['role'] == 2) {
-                header("location: dashboard/");
+                header("location: /New%20projects/dashboard/");
                 exit;
             }
         } else {

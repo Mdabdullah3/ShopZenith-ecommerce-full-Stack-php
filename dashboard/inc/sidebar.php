@@ -15,12 +15,12 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="index.html">
+            <a class="nav-link" href="/New%20projects/dashboard">
                 <span class="menu-title">Dashboard</span>
                 <i class="mdi mdi-home menu-icon"></i>
             </a>
         </li>
-        <li class="nav-item">
+        <!-- <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
                 <span class="menu-title">Basic UI Elements</span>
                 <i class="menu-arrow"></i>
@@ -36,22 +36,22 @@
                     </li>
                 </ul>
             </div>
-        </li>
+        </li> -->
         <li class="nav-item">
-            <a class="nav-link" href="pages/icons/mdi.html">
-                <span class="menu-title">Icons</span>
+            <a class="nav-link" href="/New%20projects/dashboard/Users/users.php">
+                <span class="menu-title">Users</span>
                 <i class="mdi mdi-contacts menu-icon"></i>
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="pages/forms/basic_elements.html">
-                <span class="menu-title">Forms</span>
+            <a class="nav-link" href="/New%20projects/dashboard/Categories/categories.php">
+                <span class="menu-title">Categories</span>
                 <i class="mdi mdi-format-list-bulleted menu-icon"></i>
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="pages/charts/chartjs.html">
-                <span class="menu-title">Charts</span>
+            <a class="nav-link" href="/New%20projects/dashboard/Products/products.php">
+                <span class="menu-title">Products</span>
                 <i class="mdi mdi-chart-bar menu-icon"></i>
             </a>
         </li>
