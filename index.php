@@ -24,11 +24,13 @@
   ?>
 
   <!-- Start Hero Section -->
-  <?php include "src/Home/Banner.php" ?>
+  <?php $img = "assets/images/couch.png";
+  $title = "Modern Interior Design Studio";
+  include "src/Home/Banner.php" ?>
   <!-- End Hero Section -->
 
   <!-- Start Product Section -->
-  <?php include "src/Products/Products.php" ?>
+  <?php include "src/Home/Products.php" ?>
   <!-- End Product Section -->
 
   <!-- Start Why Choose Us Section -->
@@ -46,7 +48,7 @@
             <div class="col-6 col-md-6">
               <div class="feature">
                 <div class="icon">
-                  <img src="images/truck.svg" alt="Image" class="imf-fluid" />
+                  <img src="assets/images/truck.svg" alt="Image" class="imf-fluid" />
                 </div>
                 <h3>Fast &amp; Free Shipping</h3>
                 <p>
@@ -59,7 +61,7 @@
             <div class="col-6 col-md-6">
               <div class="feature">
                 <div class="icon">
-                  <img src="images/bag.svg" alt="Image" class="imf-fluid" />
+                  <img src="assets/images/bag.svg" alt="Image" class="imf-fluid" />
                 </div>
                 <h3>Easy to Shop</h3>
                 <p>
@@ -72,7 +74,7 @@
             <div class="col-6 col-md-6">
               <div class="feature">
                 <div class="icon">
-                  <img src="images/support.svg" alt="Image" class="imf-fluid" />
+                  <img src="assets/images/support.svg" alt="Image" class="imf-fluid" />
                 </div>
                 <h3>24/7 Support</h3>
                 <p>
@@ -85,7 +87,7 @@
             <div class="col-6 col-md-6">
               <div class="feature">
                 <div class="icon">
-                  <img src="images/return.svg" alt="Image" class="imf-fluid" />
+                  <img src="assets/images/return.svg" alt="Image" class="imf-fluid" />
                 </div>
                 <h3>Hassle Free Returns</h3>
                 <p>
@@ -99,7 +101,7 @@
 
         <div class="col-lg-5">
           <div class="img-wrap">
-            <img src="images/why-choose-us-img.jpg" alt="Image" class="img-fluid" />
+            <img src="assets/images/why-choose-us-img.jpg" alt="Image" class="img-fluid" />
           </div>
         </div>
       </div>
@@ -114,7 +116,7 @@
         <div class="col-12 col-md-6 col-lg-4 mb-4 mb-lg-0">
           <div class="product-item-sm d-flex">
             <div class="thumbnail">
-              <img src="images/product-1.png" alt="Image" class="img-fluid" />
+              <img src="assets/images/product-1.png" alt="Image" class="img-fluid" />
             </div>
             <div class="pt-3">
               <h3>Nordic Chair</h3>
@@ -130,7 +132,7 @@
         <div class="col-12 col-md-6 col-lg-4 mb-4 mb-lg-0">
           <div class="product-item-sm d-flex">
             <div class="thumbnail">
-              <img src="images/product-2.png" alt="Image" class="img-fluid" />
+              <img src="assets/images/product-2.png" alt="Image" class="img-fluid" />
             </div>
             <div class="pt-3">
               <h3>Kruzo Aero Chair</h3>
@@ -146,7 +148,7 @@
         <div class="col-12 col-md-6 col-lg-4 mb-4 mb-lg-0">
           <div class="product-item-sm d-flex">
             <div class="thumbnail">
-              <img src="images/product-3.png" alt="Image" class="img-fluid" />
+              <img src="assets/images/product-3.png" alt="Image" class="img-fluid" />
             </div>
             <div class="pt-3">
               <h3>Ergonomic Chair</h3>
@@ -163,7 +165,8 @@
   </div>
 
   <!-- Start Testimonial Slider -->
-  <?php include "src/Home/Testimonial.php"  ?>
+  <?php $img = "assets/images/person-1.png";
+  include "src/Home/Testimonial.php"  ?>
 
   <!-- Start Footer Section -->
   <?php $img = "assets/images/sofa.png";

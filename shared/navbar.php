@@ -12,7 +12,7 @@
                     <a class="nav-link" href="/New%20projects/index.php">Home</a>
                 </li>
                 <li><a class="nav-link" href="shop.html">Shop</a></li>
-                <li><a class="nav-link" href="blog.html">Blog</a></li>
+                <li><a class="nav-link" href="/New%20projects/src/pages/Blog/Blog.php">Blog</a></li>
                 <li><a class="nav-link" href="/New%20projects/shared/contact.php">Contact us</a></li>
             </ul>
 

@@ -4,7 +4,7 @@
             <div class="col-lg-5">
                 <div class="intro-excerpt">
                     <h1>
-                        Modern Interior <span clsas="d-block">Design Studio</span>
+                        <?= $title; ?>
                     </h1>
                     <p class="mb-4">
                         Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet
@@ -17,7 +17,7 @@
             </div>
             <div class="col-lg-7">
                 <div class="hero-img-wrap">
-                    <img src="images/couch.png" class="img-fluid" />
+                    <img src=<?= $img; ?> class="img-fluid" />
                 </div>
             </div>
         </div>

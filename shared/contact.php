@@ -14,8 +14,13 @@
 </head>
 
 <body>
+    <!-- Navbar Here -->
     <?php include "navbar.php" ?>
 
+    <!-- Banner here  -->
+    <?php $img = "../assets/images/couch.png";
+    $title = "Contact Us";
+    include "../src/Home/Banner.php" ?>
     <div class="untree_co-section">
         <div class="container">
             <div class="block">
