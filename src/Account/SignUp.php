@@ -2,7 +2,9 @@
 require __DIR__ . "/../../vendor/autoload.php";
 
 use App\DB\Database as DB;
-
+// Dynamic Url 
+require_once(__DIR__ . '/../../DynamicUrlGenerator.php');
+$urlGenerator = new DynamicUrlGenerator();
 $conn = DB::connect();
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $fname = $conn->escape_string($_POST['first_name']);
@@ -29,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $conn->query($q);
         if ($conn->affected_rows) {
             $message = "User Registered Successfully";
-            header("location: /New%20projects/index.php");
+            header("location: " . $urlGenerator->generateLink('/index.php'));
         }
     }
 }

@@ -6,6 +6,9 @@ require __DIR__ . '/../../vendor/autoload.php';
 
 use App\DB\Database as DB;
 
+// Dynamic Url 
+require_once(__DIR__ . '/../../DynamicUrlGenerator.php');
+$urlGenerator = new DynamicUrlGenerator();
 // Check if the form was submitted via POST
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $conn = DB::connect();
@@ -31,10 +34,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             // Redirect based on user role
             if ($row['role'] == 1) {
-                header("location: /New%20projects/index.php");
+                header("location: " . $urlGenerator->generateLink('/index.php'));
                 exit;
             } elseif ($row['role'] == 2) {
-                header("location: /New%20projects/dashboard/");
+                header("location: " . $urlGenerator->generateLink('/dashboard'));
                 exit;
             }
         } else {

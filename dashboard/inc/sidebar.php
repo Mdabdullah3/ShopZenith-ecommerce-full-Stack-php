@@ -1,3 +1,9 @@
+<?php
+require_once(__DIR__ . '/../../DynamicUrlGenerator.php');
+// Include the class definition
+
+$urlGenerator = new DynamicUrlGenerator();
+?>
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
     <ul class="nav">
         <li class="nav-item nav-profile">
@@ -15,7 +21,7 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="/New%20projects/dashboard">
+            <a class="nav-link" href="<?php echo $urlGenerator->generateLink('/dashboard'); ?>">
                 <span class="menu-title">Dashboard</span>
                 <i class="mdi mdi-home menu-icon"></i>
             </a>
@@ -38,19 +44,20 @@
             </div>
         </li> -->
         <li class="nav-item">
-            <a class="nav-link" href="/New%20projects/dashboard/Users/users.php">
+
+            <a class="nav-link" href="<?php echo $urlGenerator->generateLink('/dashboard/Users/users.php'); ?>">
                 <span class="menu-title">Users</span>
                 <i class="mdi mdi-contacts menu-icon"></i>
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="/New%20projects/dashboard/Categories/categories.php">
+            <a class="nav-link" href="<?php echo $urlGenerator->generateLink('/dashboard/Categories/categories.php'); ?>">
                 <span class="menu-title">Categories</span>
                 <i class="mdi mdi-format-list-bulleted menu-icon"></i>
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="/New%20projects/dashboard/Products/products.php">
+            <a class="nav-link" href="<?php echo $urlGenerator->generateLink('/dashboard/Products/products.php'); ?>">
                 <span class="menu-title">Products</span>
                 <i class="mdi mdi-chart-bar menu-icon"></i>
             </a>
