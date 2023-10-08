@@ -1,33 +1,54 @@
 <?php
 session_start();
-// Echo Dir 
-require __DIR__ . '../../vendor/autoload.php';
+
+// Include necessary files
+require __DIR__ . '/../../vendor/autoload.php';
 
 use App\DB\Database as DB;
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+// Check if the form was submitted via POST
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $conn = DB::connect();
-    $eamil = $_POST["eamil"];
+    $email = $_POST["email"];
     $password = $_POST["password"];
-    $query = "SELECT * FROM users WHERE email='$eamil' limit 1";
-    $result = $conn->$query($query);
-    if ($result->num_rows) {
+
+    // Prepare and execute the SQL query to fetch the user
+    $stmt = $conn->prepare("SELECT * FROM users WHERE email = ?");
+    $stmt->bind_param("s", $email);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    // Check if a user with the provided email exists
+    if ($result->num_rows === 1) {
         $row = $result->fetch_assoc();
-        if (password_verify($pass, $row['password'])) {
+
+        // Verify the password
+        if (password_verify($password, $row['password'])) {
             $_SESSION['loggedin'] = true;
             $_SESSION['id'] = $row['id'];
             $_SESSION['email'] = $row['email'];
             $_SESSION['role'] = $row['role'];
+
+            // Redirect based on user role
             if ($row['role'] == 1) {
-                header("location: index.php");
+                header("location: /New%20projects/index.php");
+                exit;
             } elseif ($row['role'] == 2) {
                 header("location: dashboard/");
+                exit;
             }
+        } else {
+            $message = "Incorrect Password !!";
         }
+    } else {
+        $message = "User with this email does not exist !!";
     }
+    // Close the database connection
+    $stmt->close();
+    $conn->close();
 }
-
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -52,13 +73,23 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <div class="row">
                             <div class="col-md-7 pe-0">
                                 <div class="form-left h-100 py-5 px-5">
-                                    <form action="" class="row g-4">
+                                    <form action="Login.php" method="post" class="row g-4">
+                                        <?php
+                                        if (isset($message)) {
+                                        ?>
+                                            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                                <strong>Error!</strong> <?= $message; ?>
+                                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                            </div>
+                                        <?php
+                                        }
+                                        ?>
                                         <h4 class="text-center">Login Here</h4>
                                         <div class="col-12">
                                             <label for="email">Email<span class="text-danger">*</span></label>
                                             <div class="input-group">
                                                 <div class="input-group-text"><i class="bi bi-person-fill"></i></div>
-                                                <input id="email" type="email" class="form-control" name="email" placeholder="Enter Email">
+                                                <input id="email" type="email" class="form-control" name="email" required placeholder="Enter Email">
                                             </div>
                                         </div>
 
@@ -66,7 +97,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                             <label for="password">Password<span class="text-danger">*</span></label>
                                             <div class="input-group">
                                                 <div class="input-group-text"><i class="bi bi-lock-fill"></i></div>
-                                                <input id="password" type="text" class="form-control" name="password" placeholder="Enter Password">
+                                                <input id="password" type="text" class="form-control" name="password" required placeholder="Enter Password">
                                             </div>
                                         </div>
 
@@ -101,6 +132,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </div>
     <?php $img = "../../assets/images/sofa.png";
     include "../../shared/footer.php" ?>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
 
 </html>

@@ -1,3 +1,10 @@
+<?php
+require __DIR__ . '/../vendor/autoload.php';
+
+use App\Auth as Authe;
+
+$user = Authe::User();
+?>
 <nav class="custom-navbar navbar navbar navbar-expand-md navbar-dark bg-dark" arial-label="Furni navigation bar">
     <div class="container">
         <a class="navbar-brand" href="/New%20projects/index.php">Shop Zenith<span>.</span></a>
@@ -17,8 +24,18 @@
             </ul>
 
             <ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
-                <li><a class="nav-link" href="/New%20projects/src/Account/Login.php">Login /</a></li>
-                <li><a class="nav-link" style="margin-left: -30px;" href="/New%20projects/src/Account/SignUp.php">Register</a></li>
+                <?php
+                if ($user) {
+                ?>
+                    <li><a class="nav-link" href="/New%20projects/src/Account/Logout.php">Log Out</a></li>
+                <?php } else {
+                ?>
+
+                    <li><a class="nav-link" href="/New%20projects/src/Account/Login.php">Login /</a></li>
+                    <li><a class="nav-link" style="margin-left: -30px;" href="/New%20projects/src/Account/SignUp.php">Register</a></li>
+                <?php
+                }
+                ?>
                 <li>
                     <a class="nav-link" href="cart.html"><img src="images/cart.svg" /></a>
                 </li>

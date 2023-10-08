@@ -22,7 +22,17 @@
   <?php
   include "shared/navbar.php"
   ?>
-
+  <?php
+  if (isset($_SESSION['message'])) {
+  ?>
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+      <strong>Message = </strong> <?= $_SESSION['message']; ?>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+  <?php
+    unset($_SESSION['message']);
+  }
+  ?>
   <!-- Start Hero Section -->
   <?php $img = "assets/images/couch.png";
   $title = "Modern Interior Design Studio";
