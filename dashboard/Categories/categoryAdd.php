@@ -3,20 +3,34 @@ session_start();
 require __DIR__ . '/../../vendor/autoload.php';
 
 use App\DB\Database as DB;
-//for authorization start
-use App\Auth as Auth;
 
-Auth::AdminCheck();
-// if(!Auth::isAdmin()){ 
-//     header("location: ../index.php");
-//     die("You are not admin");
-//  } 
-//for authorization end
-$conn = DB::connect();
-$query = "select * from categories where 1";
-$result = $conn->query($query);
-// echo $result->num_rows;
-$conn->close();
+//  adding a new category
+function handleAddCategory()
+{
+    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['newCategoryName'])) {
+        $conn = DB::connect();
+        $newCategoryName = $conn->escape_string($_POST['newCategoryName']);
+
+        if (!empty($newCategoryName)) {
+            $insertQuery = "insert into categories values(null,'{$newCategoryName}',null,null)";
+            if ($conn->query($insertQuery)) {
+                $_SESSION['message'] = "New Category Added Successfully";
+                header("location: categories.php");
+            } else {
+                $_SESSION['message'] = "Error Adding New Category";
+            }
+        } else {
+            $_SESSION['message'] = "Category Name cannot be empty";
+        }
+
+        $conn->close();
+    }
+}
+
+if (isset($_POST['newCategoryName'])) {
+    handleAddCategory();
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -24,7 +38,7 @@ $conn->close();
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <title>Dashboard - Categories</title>
+    <title>Dashboard - Categories Add</title>
     <link rel="stylesheet" href="assets/vendors/mdi/css/materialdesignicons.min.css" />
     <link rel="stylesheet" href="../../assets/css/bootstrap.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous" />
@@ -43,40 +57,17 @@ $conn->close();
             include "../inc/sidebar.php" ?>
             <!-- Main  -->
             <main class="main-panel mt-5 mx-5">
-                <!-- <?php include "inc/message.php"; ?> -->
-                <div class="d-flex justify-content-between my-4">
-                    <h3>Category Management</h3>
-                    <a class="btn btn-outline-primary px-4 mb-2" href="categoryAdd.php"> Add <i class="bi bi-plus fs-5"></i></a>
-                </div>
-                <table class="table align-middle mb-0 bg-white">
-                    <thead class="bg-light">
-                        <tr>
-                            <th>ID</th>
-                            <th>Name</th>
-                            <th>Created At</th>
-                            <th>Updated At</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php
-                        if ($result->num_rows) {
-                            while ($row = $result->fetch_assoc()) {
-                                echo "<tr>
-            <td>{$row['id']}</td>
-            <td>{$row['name']}</td>
-            <td>{$row['created']}</td>
-            <td>{$row['updated']}</td>
-            <td>
-            <a href='categoryEdit.php?id={$row['id']}' title='edit'><i class='bi bi-pencil-square'></i></a> | 
-            <a onclick=\"return confirm('Are you sure?')\" href='categoryDelete.php?id={$row['id']}' title='delete'><i class='bi bi-trash'></i></a>
-            </td>
-            </tr>";
-                            }
-                        }
-                        ?>
-                    </tbody>
-                </table>
+                <form class="mx-1 mx-md-4 mt-5" action="categoryAdd.php" method="post">
+                    <div class="d-flex flex-row align-items-center mb-4">
+                        <i class="fas fa-plus-circle fa-lg me-3 fa-fw"></i>
+                        <div class="form-outline flex-fill mb-0">
+                            <input type="text" name="newCategoryName" id="form3Example1c" class="form-control" placeholder="New Category Name" />
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+                        <button type="submit" class="fs-5 px-4 btn btn-block btn-lg btn-gradient-primary">Add New Category</button>
+                    </div>
+                </form>
             </main>
         </div>
         <!-- page-body-wrapper ends -->

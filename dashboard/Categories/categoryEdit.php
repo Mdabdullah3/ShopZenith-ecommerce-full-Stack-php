@@ -3,20 +3,44 @@ session_start();
 require __DIR__ . '/../../vendor/autoload.php';
 
 use App\DB\Database as DB;
-//for authorization start
-use App\Auth as Auth;
 
-Auth::AdminCheck();
-// if(!Auth::isAdmin()){ 
-//     header("location: ../index.php");
-//     die("You are not admin");
-//  } 
-//for authorization end
-$conn = DB::connect();
-$query = "select * from categories where 1";
-$result = $conn->query($query);
-// echo $result->num_rows;
-$conn->close();
+// Post method
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $conn = DB::connect();
+    $idtoedit = $_POST['id'];
+    $fname = $conn->escape_string($_POST['name']);
+    $error = false;
+
+    if (!$error) {
+        // Update the 'category' table with the 'name' column
+        $editquery = "UPDATE categories SET name='{$fname}' WHERE id='{$idtoedit}' LIMIT 1";
+        $conn->query($editquery);
+
+        if ($conn->affected_rows) {
+            $_SESSION['message'] = "Category Updated Successfully";
+            header("location: categories.php");
+        } else {
+            $message = "ERROR!!";
+        }
+
+        $conn->close();
+    }
+}
+// Get method
+if (isset($_GET['id'])) {
+    $id = filter_var($_GET['id'], FILTER_VALIDATE_INT);
+    $conn = DB::connect();
+    $query = "SELECT * FROM categories WHERE id={$id}";
+    $result = $conn->query($query);
+
+    if (!$result->num_rows) {
+        echo "No category Data Found!!!";
+        exit;
+    }
+
+    $row = $result->fetch_assoc();
+    $conn->close();
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -45,38 +69,22 @@ $conn->close();
             <main class="main-panel mt-5 mx-5">
                 <!-- <?php include "inc/message.php"; ?> -->
                 <div class="d-flex justify-content-between my-4">
-                    <h3>Category Management</h3>
-                    <a class="btn btn-outline-primary px-4 mb-2" href="categoryAdd.php"> Add <i class="bi bi-plus fs-5"></i></a>
+                    <h3>Category Update</h3>
                 </div>
-                <table class="table align-middle mb-0 bg-white">
-                    <thead class="bg-light">
-                        <tr>
-                            <th>ID</th>
-                            <th>Name</th>
-                            <th>Created At</th>
-                            <th>Updated At</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php
-                        if ($result->num_rows) {
-                            while ($row = $result->fetch_assoc()) {
-                                echo "<tr>
-            <td>{$row['id']}</td>
-            <td>{$row['name']}</td>
-            <td>{$row['created']}</td>
-            <td>{$row['updated']}</td>
-            <td>
-            <a href='categoryEdit.php?id={$row['id']}' title='edit'><i class='bi bi-pencil-square'></i></a> | 
-            <a onclick=\"return confirm('Are you sure?')\" href='categoryDelete.php?id={$row['id']}' title='delete'><i class='bi bi-trash'></i></a>
-            </td>
-            </tr>";
-                            }
-                        }
-                        ?>
-                    </tbody>
-                </table>
+                <form class="mx-1 mx-md-4" action="categoryEdit.php?id=<?= $id; ?>" method="post">
+                    <input type="hidden" name="id" value="<?= $row['id'] ?>">
+                    <div class="d-flex flex-row align-items-center mb-4">
+                        <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                        <div class="form-outline flex-fill mb-0">
+                            <input type="text" name="name" id="form3Example1c" class="form-control" value="<?= $row['name'] ?>" />
+                            <label class="form-label" for="form3Example1c"> Name</label>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+                        <button type="submit" class="fs-5 px-4 btn btn-block btn-lg btn-gradient-primary">Update Category</button>
+                    </div>
+
+                </form>
             </main>
         </div>
         <!-- page-body-wrapper ends -->
