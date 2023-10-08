@@ -1,3 +1,34 @@
+<?php
+session_start();
+// Echo Dir 
+require __DIR__ . '../../vendor/autoload.php';
+
+use App\DB\Database as DB;
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $conn = DB::connect();
+    $eamil = $_POST["eamil"];
+    $password = $_POST["password"];
+    $query = "SELECT * FROM users WHERE email='$eamil' limit 1";
+    $result = $conn->$query($query);
+    if ($result->num_rows) {
+        $row = $result->fetch_assoc();
+        if (password_verify($pass, $row['password'])) {
+            $_SESSION['loggedin'] = true;
+            $_SESSION['id'] = $row['id'];
+            $_SESSION['email'] = $row['email'];
+            $_SESSION['role'] = $row['role'];
+            if ($row['role'] == 1) {
+                header("location: index.php");
+            } elseif ($row['role'] == 2) {
+                header("location: dashboard/");
+            }
+        }
+    }
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
