@@ -20,10 +20,8 @@ $user = Authe::User();
                 </li>
                 <li><a class="nav-link" href="shop.html">Shop</a></li>
                 <li><a class="nav-link" href="/New%20projects/src/pages/Blog/Blog.php">Blog</a></li>
+                <li><a class="nav-link" href="/New%20projects/dashboard">Dashboard</a></li>
                 <li><a class="nav-link" href="/New%20projects/shared/contact.php">Contact us</a></li>
-            </ul>
-
-            <ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
                 <?php
                 if ($user) {
                 ?>
@@ -37,7 +35,7 @@ $user = Authe::User();
                 }
                 ?>
                 <li>
-                    <a class="nav-link" href="cart.html"><img src="images/cart.svg" /></a>
+                    <a class="nav-link" href="cart.html"><img src=<?= $img; ?> /></a>
                 </li>
             </ul>
         </div>

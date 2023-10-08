@@ -96,8 +96,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </head>
 
 <body>
-    <?php include "../../shared/navbar.php" ?>
-
+    <?php $img = "../../assets/images/cart.svg";
+    include "../../shared/navbar.php" ?>
     <section class="container">
         <div class="row vh-100">
             <div class="col-md-7 col-12">

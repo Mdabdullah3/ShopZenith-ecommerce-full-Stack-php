@@ -5,21 +5,18 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
   <link rel="shortcut icon" href="favicon.png" />
-
-  <meta name="description" content="" />
-  <meta name="keywords" content="bobootstrap4" />
-
   <!-- Bootstrap CSS -->
   <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
   <link href="assets/css/tiny-slider.css" rel="stylesheet" />
   <link href="assets/css/style.css" rel="stylesheet" />
-  <title></title>
+
+  <title>Home</title>
 </head>
 
 <body>
   <!-- Start Header/Navigation -->
-  <?php
+  <?php $img = "assets/images/cart.svg";
   include "shared/navbar.php"
   ?>
   <?php

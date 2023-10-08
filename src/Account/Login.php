@@ -64,7 +64,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 
 <body>
-    <?php include "../../shared/navbar.php" ?>
+    <?php $img = "../../assets/images/cart.svg";
+    include "../../shared/navbar.php" ?>
     <div class="login-page bg-light my-5">
         <div class="container">
             <div class="row">

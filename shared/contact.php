@@ -15,8 +15,8 @@
 
 <body>
     <!-- Navbar Here -->
-    <?php include "navbar.php" ?>
-
+    <?php $img = "../assets/images/cart.svg";
+    include "navbar.php" ?>
     <!-- Banner here  -->
     <?php $img = "../assets/images/couch.png";
     $title = "Contact Us";

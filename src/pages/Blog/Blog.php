@@ -12,7 +12,8 @@
 
 <body>
     <!-- Navbar Here  -->
-    <?php include "../../../shared/navbar.php" ?>
+    <?php $img = "../../../assets/images/cart.svg";
+    include "../../../shared/navbar.php" ?>
 
     <!-- Banner Page Here  -->
     <!-- Banner here  -->
