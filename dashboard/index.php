@@ -1,3 +1,12 @@
+<?php
+require_once('../src/Auth.php');
+
+use App\Auth as Authe;
+
+Authe::AdminCheck();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 

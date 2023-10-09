@@ -30,9 +30,12 @@ $urlGenerator = new DynamicUrlGenerator();
 
 
                 <li><a class="nav-link" href="<?php echo $urlGenerator->generateLink('/src/pages/Blog/Blog.php'); ?>">Blog</a></li>
-
-                <li><a class="nav-link" href="<?php echo $urlGenerator->generateLink('/dashboard'); ?>">Dashboard</a></li>
-
+                <?php
+                if ($user) {
+                    echo $user["role"] == 2 ?
+                        '<li><a class="nav-link" href=' . $urlGenerator->generateLink('/dashboard') . '>Dashboard</a></li>' : "";
+                }
+                ?>
                 <li><a class="nav-link" href="<?php echo $urlGenerator->generateLink('/shared/contact.php'); ?>">Contact us</a></li>
                 <?php
                 if ($user) {

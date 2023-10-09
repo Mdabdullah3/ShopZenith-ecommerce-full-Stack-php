@@ -1,8 +1,7 @@
 <?php
 require_once(__DIR__ . '/../../DynamicUrlGenerator.php');
-// Include the class definition
-
 $urlGenerator = new DynamicUrlGenerator();
+
 ?>
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
     <ul class="nav">
