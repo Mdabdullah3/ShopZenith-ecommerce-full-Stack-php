@@ -1,8 +1,12 @@
 <?php
+
 namespace App;
-class Url{
-    public const BASE_URL = 'http://192.168.54.15/poly-web-02-laravel/class14/e-comercee/';
-    public static function link($path){
+
+class Url
+{
+    public const BASE_URL = 'http://localhost/e-comercee/';
+    public static function link($path)
+    {
         return rtrim(Url::BASE_URL, '/') . '/' . $path;
     }
 }

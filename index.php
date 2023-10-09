@@ -10,13 +10,13 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
   <link href="assets/css/tiny-slider.css" rel="stylesheet" />
   <link href="assets/css/style.css" rel="stylesheet" />
-
   <title>Home</title>
 </head>
 
 <body>
   <!-- Start Header/Navigation -->
   <?php $img = "assets/images/cart.svg";
+  $style = "assets/css/style.css";
   include "shared/navbar.php"
   ?>
   <?php
@@ -33,11 +33,11 @@
   <!-- Start Hero Section -->
   <?php $img = "assets/images/couch.png";
   $title = "Modern Interior Design Studio";
-  include "src/Home/Banner.php" ?>
+  include "components/Banner.php" ?>
   <!-- End Hero Section -->
 
   <!-- Start Product Section -->
-  <?php include "src/Home/Products.php" ?>
+  <?php include "components/Products.php" ?>
   <!-- End Product Section -->
 
   <!-- Start Why Choose Us Section -->

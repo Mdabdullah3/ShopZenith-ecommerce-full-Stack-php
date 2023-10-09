@@ -1,7 +1,7 @@
 <?php
-require_once(__DIR__ . '/../../DynamicUrlGenerator.php');
-$urlGenerator = new DynamicUrlGenerator();
+require_once(__DIR__ . '/../../src/Url.php');
 
+use App\Url;
 ?>
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
     <ul class="nav">
@@ -20,43 +20,26 @@ $urlGenerator = new DynamicUrlGenerator();
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="<?php echo $urlGenerator->generateLink('/dashboard'); ?>">
+            <a class="nav-link" href="<?= Url::link('/dashboard'); ?>">
                 <span class="menu-title">Dashboard</span>
                 <i class="mdi mdi-home menu-icon"></i>
             </a>
         </li>
-        <!-- <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
-                <span class="menu-title">Basic UI Elements</span>
-                <i class="menu-arrow"></i>
-                <i class="mdi mdi-crosshairs-gps menu-icon"></i>
-            </a>
-            <div class="collapse" id="ui-basic">
-                <ul class="nav flex-column sub-menu">
-                    <li class="nav-item">
-                        <a class="nav-link" href="pages/ui-features/buttons.html">Buttons</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="pages/ui-features/typography.html">Typography</a>
-                    </li>
-                </ul>
-            </div>
-        </li> -->
         <li class="nav-item">
 
-            <a class="nav-link" href="<?php echo $urlGenerator->generateLink('/dashboard/Users/users.php'); ?>">
+            <a class="nav-link" href="<?= Url::link('/dashboard/Users/users.php'); ?>">
                 <span class="menu-title">Users</span>
                 <i class="mdi mdi-contacts menu-icon"></i>
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="<?php echo $urlGenerator->generateLink('/dashboard/Categories/categories.php'); ?>">
+            <a class="nav-link" href="<?= Url::link('/dashboard/Categories/categories.php'); ?>">
                 <span class="menu-title">Categories</span>
                 <i class="mdi mdi-format-list-bulleted menu-icon"></i>
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="<?php echo $urlGenerator->generateLink('/dashboard/Products/products.php'); ?>">
+            <a class="nav-link" href="<?= Url::link('/dashboard/Products/products.php'); ?>">
                 <span class="menu-title">Products</span>
                 <i class="mdi mdi-chart-bar menu-icon"></i>
             </a>

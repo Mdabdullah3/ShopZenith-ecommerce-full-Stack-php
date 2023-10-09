@@ -1,7 +1,7 @@
 <?php
 // echo __DIR__;
 
-require __DIR__ . '/../../vendor/autoload.php';
+require __DIR__ . '/../vendor/autoload.php';
 
 use App\DB\Database as DB;
 use App\Auth as Auth;
@@ -22,9 +22,8 @@ GROUP BY
 p.id, p.name, p.details";
 $pqr = $conn->query($pq);
 $conn->close();
-// Dynamic Url 
-require_once(__DIR__ . '/../../DynamicUrlGenerator.php');
-$urlGenerator = new DynamicUrlGenerator();
+
+use App\Url;
 ?>
 <div class="product-section">
     <div class="container">
@@ -74,7 +73,7 @@ $urlGenerator = new DynamicUrlGenerator();
                                 <div class="h-75 card">
                                     <img class="img-fluid product-thumbnail h-50" src="assets/products/<?= strlen($images[0]) ? $images[0] : "noimage.png" ?>" alt="...">
                                     <div class="card-body">
-                                        <a class="" href='<?php echo $urlGenerator->generateLink('/src/pages/Products/ProductDetails.php') . '?id=' . $row['id']; ?>'>
+                                        <a class="" href='<?= Url::link('pages/Products/ProductDetails.php') . '?id=' . $row['id']; ?>'>
                                             <h5 class="product-title "><?= $row['name']; ?></h5>
                                         </a>
                                         <p class="text-muted mb-2"><?= $row["shortdesc"] ?></p>
