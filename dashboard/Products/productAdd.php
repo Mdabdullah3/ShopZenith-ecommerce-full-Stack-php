@@ -123,241 +123,209 @@ $selectQ = "select id,name from categories where 1";
 $sr = $conn->query($selectQ);
 // var_dump($sr);
 ?>
-<!DOCTYPE html>
-<html lang="en">
+<?php $title = "Product Add";
+include "head.php" ?>
+<div class="container-scroller">
+    <?php $img = "../../assets/images/face4.jpg";
+    include "../inc/Header.php" ?>
+    <div class="container-fluid page-body-wrapper">
+        <?php $img = "../../assets/images/face1.jpg";
+        include "../inc/sidebar.php" ?>
+        <!-- Main  -->
+        <main class="main-panel mt-5 mx-5">
+            <h5 class="text-center my-3">Product Insert Form</h5>
 
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <title>Dashboard - Product Add</title>
-    <link rel="stylesheet" href="assets/vendors/mdi/css/materialdesignicons.min.css" />
-    <link rel="stylesheet" href="../../assets/css/bootstrap.css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous" />
-    <!-- Option 1: Include in HTML -->
-    <link rel="stylesheet" href="../../assets/vendors/mdi/css/materialdesignicons.min.css" />
-    <!-- Option 1: Include in HTML -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-</head>
+            <?php
+            if (isset($message)) {
+            ?>
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    <strong>Message = </strong> <?= $message; ?>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            <?php
 
-<body>
-    <div class="container-scroller">
-        <?php $img = "../../assets/images/face4.jpg";
-        include "../inc/Header.php" ?>
-        <div class="container-fluid page-body-wrapper">
-            <?php $img = "../../assets/images/face1.jpg";
-            include "../inc/sidebar.php" ?>
-            <!-- Main  -->
-            <main class="main-panel mt-5 mx-5">
-                <h5 class="text-center my-3">Product Insert Form</h5>
+            }
+            ?>
+            <form class="mx-1 mx-md-4" action="productAdd.php" method="post" enctype="multipart/form-data">
+                <input type="hidden" name="id">
+                <div class="row">
+                    <div class="col-6">
+                        <div class="d-flex flex-row align-items-center mb-4">
+                            <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                            <div class="form-outline flex-fill mb-0">
+                                <label class="form-label" for="form3Example1c">Product Name</label>
 
-                <?php
-                if (isset($message)) {
-                ?>
-                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                        <strong>Message = </strong> <?= $message; ?>
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
-                <?php
-
-                }
-                ?>
-                <form class="mx-1 mx-md-4" action="productAdd.php" method="post" enctype="multipart/form-data">
-                    <input type="hidden" name="id">
-                    <div class="row">
-                        <div class="col-6">
-                            <div class="d-flex flex-row align-items-center mb-4">
-                                <i class="fas fa-user fa-lg me-3 fa-fw"></i>
-                                <div class="form-outline flex-fill mb-0">
-                                    <label class="form-label" for="form3Example1c">Product Name</label>
-
-                                    <input type="text" name="name" id="form3Example1c" class="form-control" required value="<?= isset($name) ? $name : ""; ?>" />
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <div class="d-flex flex-row align-items-center mb-4">
-                                <i class="fas fa-user fa-lg me-3 fa-fw"></i>
-                                <div class="form-outline flex-fill mb-0">
-                                    <label class="form-label" for="form3Example1c">Product Sku</label>
-
-                                    <input type="text" name="sku" id="form3Example1c" class="form-control" required value="<?= isset($sku) ? $sku : ""; ?>" />
-                                </div>
+                                <input type="text" name="name" id="form3Example1c" class="form-control" required value="<?= isset($name) ? $name : ""; ?>" />
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-6">
-                            <div class="d-flex flex-row align-items-center mb-4">
-                                <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
-                                <div class="form-outline flex-fill mb-0">
-                                    <label class="form-label" for="details">Your Product Details</label>
-                                    <!-- <input type="text" name="details" id="form3Example3c" class="form-control" required value="<?= isset($details) ? $details : ""; ?>" /> -->
-                                    <textarea required name="details" id="details" class="form-control"><?= isset($details) ? $details : ""; ?></textarea>
+                    <div class="col-6">
+                        <div class="d-flex flex-row align-items-center mb-4">
+                            <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                            <div class="form-outline flex-fill mb-0">
+                                <label class="form-label" for="form3Example1c">Product Sku</label>
 
-                                </div>
-                            </div>
-                            <div class="d-flex flex-row align-items-center mb-4">
-                                <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
-                                <div class="form-outline flex-fill mb-0">
-                                    <label class="form-label" for="shortdesc">Your Product short Details</label>
-                                    <textarea required name="shortdesc" id="shortdesc" class="form-control"><?= isset($shortdesc) ? $shortdesc : ""; ?></textarea>
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <div class="d-flex flex-row align-items-center mb-4">
-                                <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
-                                <div class="form-outline flex-fill mb-0">
-                                    <label class="form-label" for="images">Product Images</label>
-                                    <input class="form-control" type="file" name="images[]" id="images" multiple>
-                                </div>
+                                <input type="text" name="sku" id="form3Example1c" class="form-control" required value="<?= isset($sku) ? $sku : ""; ?>" />
                             </div>
                         </div>
                     </div>
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <div class="d-flex flex-row align-items-center mb-4">
+                            <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+                            <div class="form-outline flex-fill mb-0">
+                                <label class="form-label" for="details">Your Product Details</label>
+                                <!-- <input type="text" name="details" id="form3Example3c" class="form-control" required value="<?= isset($details) ? $details : ""; ?>" /> -->
+                                <textarea required name="details" id="details" class="form-control"><?= isset($details) ? $details : ""; ?></textarea>
 
-                    <div class="row">
-                        <div class="col-6">
-                            <div class="d-flex flex-row align-items-center mb-4">
-                                <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
-                                <div class="form-outline flex-fill mb-0">
-                                    <!-- <input type="number" name="category_id" id="form3Example3c" class="form-control" required value="<?= isset($category_id) ? $category_id : ""; ?>" /> --><label class="form-label" for="category_id">Your Product Category</label>
-                                    <select name="category_id" id="category_id" class="form-select">
+                            </div>
+                        </div>
+                        <div class="d-flex flex-row align-items-center mb-4">
+                            <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+                            <div class="form-outline flex-fill mb-0">
+                                <label class="form-label" for="shortdesc">Your Product short Details</label>
+                                <textarea required name="shortdesc" id="shortdesc" class="form-control"><?= isset($shortdesc) ? $shortdesc : ""; ?></textarea>
 
-                                        <option value="-1" selected disabled>Select Category</option>
-                                        <?php
-                                        $html = "";
-                                        if ($sr->num_rows) {
-                                            while ($row = $sr->fetch_assoc()) {
-                                                $s = isset($category_id) && $category_id == $row['id'] ? "selected" : "";
-                                                $html .= '<option value="' . $row['id'] . '" ' . $s . '>' . $row['name'] . '</option>';
-                                            }
-                                            echo $html;
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="d-flex flex-row align-items-center mb-4">
+                            <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+                            <div class="form-outline flex-fill mb-0">
+                                <label class="form-label" for="images">Product Images</label>
+                                <input class="form-control" type="file" name="images[]" id="images" multiple>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-6">
+                        <div class="d-flex flex-row align-items-center mb-4">
+                            <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+                            <div class="form-outline flex-fill mb-0">
+                                <!-- <input type="number" name="category_id" id="form3Example3c" class="form-control" required value="<?= isset($category_id) ? $category_id : ""; ?>" /> --><label class="form-label" for="category_id">Your Product Category</label>
+                                <select name="category_id" id="category_id" class="form-select">
+
+                                    <option value="-1" selected disabled>Select Category</option>
+                                    <?php
+                                    $html = "";
+                                    if ($sr->num_rows) {
+                                        while ($row = $sr->fetch_assoc()) {
+                                            $s = isset($category_id) && $category_id == $row['id'] ? "selected" : "";
+                                            $html .= '<option value="' . $row['id'] . '" ' . $s . '>' . $row['name'] . '</option>';
                                         }
-                                        ?>
+                                        echo $html;
+                                    }
+                                    ?>
 
-                                    </select>
+                                </select>
 
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <div class="d-flex flex-row align-items-center mb-4">
-                                <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
-                                <div class="form-outline flex-fill mb-0">
-                                    <label class="form-label" for="form3Example3c">Product Quantity </label>
-                                    <input type="number" name="quantity" id="form3Example3c" class="form-control" required value="<?= isset($quantity) ? $quantity : ""; ?>" />
-
-                                </div>
                             </div>
                         </div>
                     </div>
+                    <div class="col-6">
+                        <div class="d-flex flex-row align-items-center mb-4">
+                            <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+                            <div class="form-outline flex-fill mb-0">
+                                <label class="form-label" for="form3Example3c">Product Quantity </label>
+                                <input type="number" name="quantity" id="form3Example3c" class="form-control" required value="<?= isset($quantity) ? $quantity : ""; ?>" />
 
-                    <div class="row">
-                        <div class="col-6">
-                            <div class="d-flex flex-row align-items-center mb-4">
-                                <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
-                                <div class="form-outline flex-fill mb-0">
-                                    <label class="form-label" for="form3Example3c">'your Product Purches price </label>
-                                    <input type="number" name="pprice" id="form3Example3c" class="form-control" required value="<?= isset($pprice) ? $pprice : ""; ?>" />
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <div class="d-flex flex-row align-items-center mb-4">
-                                <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
-                                <div class="form-outline flex-fill mb-0">
-                                    <label class="form-label" for="form3Example3c">Product Sell Price
-                                    </label>
-                                    <input type="number" name="sprice" id="form3Example3c" class="form-control" required value="<?= isset($sprice) ? $sprice : ""; ?>" />
-
-                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="d-flex flex-row align-items-center mb-4">
-                        <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
-                        <div class="form-outline flex-fill mb-0">
-                            <label class="form-label" for="form3Example3c">Product tags </label>
-                            <input type="text" name="tags" id="form3Example3c" class="form-control" required value="<?= isset($tags) ? $tags : ""; ?>" />
+                </div>
 
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-6">
-                            <div class="d-flex flex-row align-items-center mb-4">
-                                <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
-                                <div class="form-outline flex-fill mb-0">
-                                    <label class="form-label" for="form3Example3c">Products Vat </label>
-                                    <input type="number" name="vat" id="form3Example3c" class="form-control" required value="<?= isset($vat) ? $vat : ""; ?>" />
+                <div class="row">
+                    <div class="col-6">
+                        <div class="d-flex flex-row align-items-center mb-4">
+                            <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+                            <div class="form-outline flex-fill mb-0">
+                                <label class="form-label" for="form3Example3c">'your Product Purches price </label>
+                                <input type="number" name="pprice" id="form3Example3c" class="form-control" required value="<?= isset($pprice) ? $pprice : ""; ?>" />
 
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <div class="d-flex flex-row align-items-center mb-4">
-                                <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
-                                <div class="form-outline flex-fill mb-0">
-                                    <label class="form-label" for="role">Product Status</label>
-                                    <select name="status" id="status" class="form-select">
-                                        <option value="-1" disabled>Select</option>
-                                        <option value="1" <?= isset($status) && $status == 1 ? "selected" : "" ?>>Stock</option>
-                                        <option value="0" <?= isset($status) && $status == 0 ? "selected" : "" ?>>Out of Stock</option>
-                                    </select>
-                                </div>
                             </div>
                         </div>
                     </div>
+                    <div class="col-6">
+                        <div class="d-flex flex-row align-items-center mb-4">
+                            <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+                            <div class="form-outline flex-fill mb-0">
+                                <label class="form-label" for="form3Example3c">Product Sell Price
+                                </label>
+                                <input type="number" name="sprice" id="form3Example3c" class="form-control" required value="<?= isset($sprice) ? $sprice : ""; ?>" />
 
-                    <div class="row">
-                        <div class="col-6">
-
-                            <div class="d-flex flex-row align-items-center mb-4">
-                                <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
-                                <div class="form-outline flex-fill mb-0">
-                                    <label class="form-label" for="form3Example3c">Option 1 </label>
-                                    <input type="text" name="op1" id="form3Example3c" class="form-control" value="<?= isset($op1) ? $op1 : ""; ?>" />
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <div class="d-flex flex-row align-items-center mb-4">
-                                <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
-                                <div class="form-outline flex-fill mb-0">
-                                    <label class="form-label" for="form3Example3c">Option 2 </label>
-                                    <input type="text" name="op2" id="form3Example3c" class="form-control" value="<?= isset($op2) ? $op2 : ""; ?>" />
-
-                                </div>
                             </div>
                         </div>
                     </div>
+                </div>
+                <div class="d-flex flex-row align-items-center mb-4">
+                    <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+                    <div class="form-outline flex-fill mb-0">
+                        <label class="form-label" for="form3Example3c">Product tags </label>
+                        <input type="text" name="tags" id="form3Example3c" class="form-control" required value="<?= isset($tags) ? $tags : ""; ?>" />
 
-                    <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                        <button type="submit" class="fs-5 px-4 btn btn-primary btn-lg">Add New Product</button>
                     </div>
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <div class="d-flex flex-row align-items-center mb-4">
+                            <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+                            <div class="form-outline flex-fill mb-0">
+                                <label class="form-label" for="form3Example3c">Products Vat </label>
+                                <input type="number" name="vat" id="form3Example3c" class="form-control" required value="<?= isset($vat) ? $vat : ""; ?>" />
 
-                </form>
-            </main>
-        </div>
-        <!-- page-body-wrapper ends -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="d-flex flex-row align-items-center mb-4">
+                            <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+                            <div class="form-outline flex-fill mb-0">
+                                <label class="form-label" for="role">Product Status</label>
+                                <select name="status" id="status" class="form-select">
+                                    <option value="-1" disabled>Select</option>
+                                    <option value="1" <?= isset($status) && $status == 1 ? "selected" : "" ?>>Stock</option>
+                                    <option value="0" <?= isset($status) && $status == 0 ? "selected" : "" ?>>Out of Stock</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-6">
+
+                        <div class="d-flex flex-row align-items-center mb-4">
+                            <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+                            <div class="form-outline flex-fill mb-0">
+                                <label class="form-label" for="form3Example3c">Option 1 </label>
+                                <input type="text" name="op1" id="form3Example3c" class="form-control" value="<?= isset($op1) ? $op1 : ""; ?>" />
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="d-flex flex-row align-items-center mb-4">
+                            <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+                            <div class="form-outline flex-fill mb-0">
+                                <label class="form-label" for="form3Example3c">Option 2 </label>
+                                <input type="text" name="op2" id="form3Example3c" class="form-control" value="<?= isset($op2) ? $op2 : ""; ?>" />
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+                    <button type="submit" class="fs-5 px-4 btn btn-primary btn-lg">Add New Product</button>
+                </div>
+
+            </form>
+        </main>
     </div>
-    <script src="../../assets/vendors/js/vendor.bundle.base.js"></script>
-    <!-- endinject -->
-    <!-- Plugin js for this page -->
-    <script src="../../assets/vendors/chart.js/Chart.min.js"></script>
-    <script src="../../assets/js/jquery.cookie.js" type="text/javascript"></script>
-    <!-- End plugin js for this page -->
-    <!-- inject:js -->
-    <script src="../../assets/js/off-canvas.js"></script>
-    <script src="../../assets/js/hoverable-collapse.js"></script>
-    <script src="../../assets/js/misc.js"></script>
-    <!-- endinject -->
-    <!-- Custom js for this page -->
-    <script src="../../assets/js/dashboard.js"></script>
-    <script src="../../assets/js/todolist.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-</body>
-
-</html>
+    <!-- page-body-wrapper ends -->
+</div>
+<?php include "footer.php" ?>
