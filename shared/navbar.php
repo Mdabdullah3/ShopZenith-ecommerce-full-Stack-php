@@ -23,7 +23,7 @@ $user = Authe::User();
     <nav class="custom-navbar navbar navbar navbar-expand-md navbar-dark bg-dark" arial-label="Furni navigation bar">
         <div class="container">
 
-            <a class="navbar-brand" href="<?= Url::link('/index.php'); ?>">Shop Zenith<span>.</span></a>
+            <a class="navbar-brand" href="<?= Url::link('index.php'); ?>">Shop Zenith<span>.</span></a>
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsFurni" aria-controls="navbarsFurni" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -32,28 +32,28 @@ $user = Authe::User();
             <div class="collapse navbar-collapse" id="navbarsFurni">
                 <ul class="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
                     <li class="nav-item active">
-                        <a class="nav-link" href="<?= Url::link('/index.php'); ?>">Home</a>
+                        <a class="nav-link" href="<?= Url::link('index.php'); ?>">Home</a>
                     </li>
                     <li><a class="nav-link" href="shop.html">Shop</a></li>
 
 
-                    <li><a class="nav-link" href="<?= Url::link('/pages/Blog/Blog.php'); ?>">Blog</a></li>
+                    <li><a class="nav-link" href="<?= Url::link('pages/Blog.php'); ?>">Blog</a></li>
                     <?php
                     if ($user) {
                         echo $user["role"] == 2 ?
-                            '<li><a class="nav-link" href=' . Url::link('/dashboard') . '>Dashboard</a></li>' : "";
+                            '<li><a class="nav-link" href=' . Url::link('dashboard') . '>Dashboard</a></li>' : "";
                     }
                     ?>
                     <li><a class="nav-link" href="<?= Url::link('pages/contact.php'); ?>">Contact us</a></li>
                     <?php
                     if ($user) {
                     ?>
-                        <li><a class="nav-link" href="<?= Url::link('/Account/Logout.php'); ?>">Log Out</a></li>
+                        <li><a class="nav-link" href="<?= Url::link('Account/Logout.php'); ?>">Log Out</a></li>
                     <?php } else {
                     ?>
 
-                        <li><a class="nav-link" href="<?= Url::link('/Account/Login.php'); ?>">Login /</a></li>
-                        <li><a class="nav-link" style="margin-left: -30px;" href="<?= Url::link('/Account/SignUp.php'); ?>"> Register</a></li>
+                        <li><a class="nav-link" href="<?= Url::link('Account/Login.php'); ?>">Login /</a></li>
+                        <li><a class="nav-link" style="margin-left: -30px;" href="<?= Url::link('Account/SignUp.php'); ?>"> Register</a></li>
                     <?php
                     }
                     ?>

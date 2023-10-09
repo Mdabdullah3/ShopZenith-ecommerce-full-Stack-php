@@ -197,14 +197,9 @@ include "head.php" ?>
 <script>
     let url = '<?= Url::link(""); ?>';
 
-    function deleteimage(n) {
+    function deleteimage(n) {}
 
-    }
-
-    function removeimage(n) {
-
-
-    }
+    function removeimage(n) {}
 
     $(document).ready(function() {
         $(".deleteimage").click(function() {

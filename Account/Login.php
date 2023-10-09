@@ -84,7 +84,7 @@ include "../shared/navbar.php" ?>
                                         <label for="password">Password<span class="text-danger">*</span></label>
                                         <div class="input-group">
                                             <div class="input-group-text"><i class="bi bi-lock-fill"></i></div>
-                                            <input id="password" type="text" class="form-control" name="password" required placeholder="Enter Password">
+                                            <input id="password" type="password" class="form-control" name="password" required placeholder="Enter Password">
                                         </div>
                                     </div>
 

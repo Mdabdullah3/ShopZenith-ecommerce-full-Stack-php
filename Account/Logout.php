@@ -1,6 +1,5 @@
 <?php
-// Dynamic Url 
-require_once(__DIR__ . '/../../DynamicUrlGenerator.php');
+require_once(__DIR__ . '/../src/Url.php');
 
 use App\Url;
 
