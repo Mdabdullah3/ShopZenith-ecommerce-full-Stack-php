@@ -173,7 +173,7 @@
 
   <!-- Start Testimonial Slider -->
   <?php $img = "assets/images/person-1.png";
-  include "src/Home/Testimonial.php"  ?>
+  include "components/Testimonial.php"  ?>
 
   <!-- Start Footer Section -->
   <?php $img = "assets/images/sofa.png";
