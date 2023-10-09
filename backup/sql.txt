@@ -1,0 +1,28 @@
+ALTER TABLE Orders
+ADD FOREIGN KEY (PersonID) REFERENCES Persons(PersonID);
+
+alter table products add foreign key (category_id) references categories(id) on delete restrict;
+alter table images add foreign key (product_id) references products(id) on delete cascade;
+
+SELECT
+    p.*,
+    GROUP_CONCAT(i.name) AS images
+FROM
+    products p
+LEFT JOIN
+    images i ON p.id = i.product_id
+GROUP BY
+    p.id, p.name, p.details;
+
+    
+SELECT
+    p.*,
+    GROUP_CONCAT(i.name) AS images
+FROM
+    products p
+  
+LEFT JOIN
+    images i ON p.id = i.product_id
+where p.id= 10  
+GROUP BY
+    p.id, p.name, p.details;

@@ -3,6 +3,7 @@ session_start();
 require __DIR__ . '/../../vendor/autoload.php';
 
 use App\DB\Database as DB;
+use App\Url;
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $conn = DB::connect();
@@ -46,6 +47,9 @@ if (isset($_GET['id'])) {
     }
 
     $row = $result->fetch_assoc();
+
+    $iquery = "select * from images where product_id={$id}";
+    $iresult = $conn->query($iquery);
     $conn->close();
 }
 ?>
@@ -58,6 +62,8 @@ if (isset($_GET['id'])) {
     <title>Dashboard - Products</title>
     <link rel="stylesheet" href="assets/vendors/mdi/css/materialdesignicons.min.css" />
     <link rel="stylesheet" href="../../assets/css/bootstrap.css" />
+    <link rel="stylesheet" href="../../assets/css/mystyle.css" />
+    <link href="../../assets/css/lightbox.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous" />
     <!-- Option 1: Include in HTML -->
     <link rel="stylesheet" href="../../assets/vendors/mdi/css/materialdesignicons.min.css" />
@@ -77,7 +83,9 @@ if (isset($_GET['id'])) {
                 <!-- <?php include "inc/message.php"; ?> -->
                 <form class="mx-1 mx-md-4" action="productEdit.php?id=<?= $id; ?>" method="post">
                     <input type="hidden" name="id" value="<?= $row['id'] ?>">
-                    <div class="d-flex flex-row align-items-center mb-4">
+                    <div class="row">
+                        <div class="col-6">
+                        <div class="d-flex flex-row align-items-center mb-4">
                         <i class="fas fa-user fa-lg me-3 fa-fw"></i>
                         <div class="form-outline flex-fill mb-0">
                             <input type="text" name="name" id="form3Example1c" class="form-control" value="<?= $row['name'] ?>" />
@@ -91,6 +99,18 @@ if (isset($_GET['id'])) {
                             <label class="form-label" for="form3Example1c">sku</label>
                         </div>
                     </div>
+                        </div>
+                        <div class="col-6 picontainer">
+                            <?php
+    if($iresult->num_rows){
+        while($irow = $iresult->fetch_assoc()){
+            echo "<div class='d-inline-block position-relative'><span data-id='".$irow['id']."' class='deleteimage position-absolute translate-middle badge rounded-pill bg-danger'> &times;<span class='visually-hidden'>delete image</span></span><a href='".Url::link('assets/products/'.$irow['name'])."' data-lightbox='p".$irow['product_id']."'><img src='".Url::link('assets/products/'.$irow['name'])."' width='200px' /></a></div>";
+    }
+}
+                            ?>
+                        </div>
+                    </div>
+
                     <div class="d-flex flex-row align-items-center mb-4">
                         <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
                         <div class="form-outline flex-fill mb-0">
@@ -191,6 +211,7 @@ if (isset($_GET['id'])) {
         <!-- page-body-wrapper ends -->
     </div>
     <script src="../../assets/vendors/js/vendor.bundle.base.js"></script>
+    <script src="../../assets/js/jquery-3.7.1.min.js"></script>
     <!-- endinject -->
     <!-- Plugin js for this page -->
     <script src="../../assets/vendors/chart.js/Chart.min.js"></script>
@@ -204,6 +225,41 @@ if (isset($_GET['id'])) {
     <!-- Custom js for this page -->
     <script src="../../assets/js/dashboard.js"></script>
     <script src="../../assets/js/todolist.js"></script>
+    <script src="../../assets/js/lightbox.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        let url = '<?= Url::link(""); ?>';
+        function deleteimage(n){
+            
+           }
+
+        function removeimage(n){
+           
+
+        }   
+
+        $(document).ready(function(){
+            $(".deleteimage").click(function(){
+                $t = $(this);
+                let n = $t.data('id');
+                let r = confirm("are you sure you want to delete?");
+            if(!r) return;
+            $.post(url + "/dashboard/Images/deleteimage.php",{iid:n},function(data){
+                data = JSON.parse(data);
+                console.log(data);
+                Swal.fire({
+  position: 'top-end',
+  icon: 'success',
+  title: data.message,
+  showConfirmButton: false,
+  timer: 1500
+});
+                $t.parent().remove();
+            });
+            });
+        });
+
+    </script>
 </body>
 
 </html>

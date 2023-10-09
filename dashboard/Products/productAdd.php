@@ -3,6 +3,8 @@ session_start();
 require __DIR__ . '/../../vendor/autoload.php';
 
 use App\DB\Database as DB;
+// import the Intervention Image Manager Class
+use Intervention\Image\ImageManagerStatic as Image;
 
 $conn = DB::connect();
 // Function to generate a custom filename (append timestamp)
@@ -79,6 +81,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                 if (!$conn->insert_id) {
                                     echo "ERROR!!";
                                     exit;
+                                } else {
+                                    // and you are ready to go ...
+                                    $image = Image::make($uploadDir . $custom_filename)->resize(800, null, function ($constraint) {
+                                        $constraint->aspectRatio();
+                                    })->save($uploadDir . $custom_filename, 60);
                                 }
                             }
                         }

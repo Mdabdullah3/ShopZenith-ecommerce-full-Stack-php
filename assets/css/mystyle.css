@@ -1,0 +1,9 @@
+.picontainer img{
+    margin: 5px;
+    margin-right: 15px;
+  }
+  .picontainer div span{
+    position: absolute;
+    top:0px;
+    right:-5px;
+  }

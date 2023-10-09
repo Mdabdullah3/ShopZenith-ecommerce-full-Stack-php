@@ -6,7 +6,7 @@ class DynamicUrlGenerator
     public function __construct()
     {
         // Adjust the base URL to your root URL
-        $this->base_url = 'http://localhost/e-comercee';
+        $this->base_url = 'http://192.168.54.15/poly-web-02-laravel/class14/e-comercee/';
     }
 
     public function generateLink($path)

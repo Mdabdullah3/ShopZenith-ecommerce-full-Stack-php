@@ -3,7 +3,8 @@
   "description": "testing composer based project",
   "type": "project",
   "require": {
-    "nesbot/carbon": "^2.70"
+    "nesbot/carbon": "^2.70",
+    "intervention/image": "^2.7"
   },
   "autoload": {
     "psr-4": {
