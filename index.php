@@ -10,10 +10,11 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
   <link href="assets/css/tiny-slider.css" rel="stylesheet" />
   <link href="assets/css/style.css" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/mystyle.css">
   <title>Home</title>
 </head>
 
-<body>
+<body class="font-monospace">
   <!-- Start Header/Navigation -->
   <?php $img = "assets/images/cart.svg";
   $style = "assets/css/style.css";

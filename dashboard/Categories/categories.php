@@ -7,11 +7,6 @@ use App\DB\Database as DB;
 use App\Auth as Auth;
 
 Auth::AdminCheck();
-// if(!Auth::isAdmin()){ 
-//     header("location: ../index.php");
-//     die("You are not admin");
-//  } 
-//for authorization end
 $conn = DB::connect();
 $query = "select * from categories where 1";
 $result = $conn->query($query);

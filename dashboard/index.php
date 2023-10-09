@@ -20,7 +20,7 @@ Authe::AdminCheck();
     <link rel="stylesheet" href="../assets/vendors/mdi/css/materialdesignicons.min.css" />
 </head>
 
-<body>
+<body class="font-monospace">
     <div class="container-scroller">
         <?php $img = "../assets/images/face4.jpg";
         include "inc/Header.php" ?>

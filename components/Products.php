@@ -25,12 +25,12 @@ $conn->close();
 
 use App\Url;
 ?>
-<div class="product-section">
-    <div class="container">
+<div class="product-section font-monospace">
+    <div class="products-area">
         <div class="row">
             <!-- Start Column 1 -->
             <div class="col-3">
-                <div class="container">
+                <div class="">
                     <div class="row mb-5">
                         <div class="col-12">
                             <div class="card mb-4">
@@ -51,34 +51,29 @@ use App\Url;
                     </div>
                 </div>
             </div>
-            <!-- <div class="col-12 col-md-4 col-lg-3 mb-5 mb-md-0">
-                <a class="product-item" href="cart.html">
-                    <img src="images/product-1.png" class="img-fluid product-thumbnail" />
-                    <h3 class="product-title">Nordic Chair</h3>
-                    <strong class="product-price">$50.00</strong>
 
-                    <span class="icon-cross">
-                        <img src="images/cross.svg" class="img-fluid" />
-                    </span>
-                </a>
-            </div> -->
-            <div class="col-9" style="margin-top: 100px;">
-                <div class="row row-cols-1 row-cols-md-3 g-4">
+            <div class="col-9">
+                <div class="products">
                     <?php
                     if ($pqr->num_rows) {
                         while ($row = $pqr->fetch_assoc()) {
                             $images = explode(",", $row['images']);
                     ?>
-                            <div class="col" style="margin-top: -80px;">
-                                <div class="h-75 card">
-                                    <img class="img-fluid product-thumbnail h-50" src="assets/products/<?= strlen($images[0]) ? $images[0] : "noimage.png" ?>" alt="...">
-                                    <div class="card-body">
-                                        <a class="" href='<?= Url::link('pages/Products/ProductDetails.php') . '?id=' . $row['id']; ?>'>
-                                            <h5 class="product-title "><?= $row['name']; ?></h5>
+                            <div class="products-card">
+                                <img class="h-25" alt="Product-img" src="assets/products/<?= strlen($images[0]) ? $images[0] : "noimage.png" ?>" alt="...">
+                                <div class="card-body mt-3">
+                                    <div class="col-10">
+                                        <a class="text-decoration-none text-center text-capitalize" href='<?= Url::link('pages/Products/ProductDetails.php') . '?id=' . $row['id']; ?>'>
+                                            <h5 class="card-title "><?= $row['name']; ?></h5>
                                         </a>
-                                        <p class="text-muted mb-2"><?= $row["shortdesc"] ?></p>
-                                        <p class="product-price">$<?= $row['sprice'] ?></p>
                                     </div>
+                                </div>
+                                <h1 class="stcok"><?= $row['status'] == 1 ? 'Stock' : 'Stock Out' ?></h1>
+                                <div class="text-center">
+                                    <h5><span class="text-black">Price-</span> $<?= $row['sprice'] ?></h5>
+                                </div>
+                                <div class="cart-btn">
+                                    <a href="#" class="btn btn-dark w-100 p-3 rounded-0 text-white">ADD TO CART</a>
                                 </div>
                             </div>
                     <?php
