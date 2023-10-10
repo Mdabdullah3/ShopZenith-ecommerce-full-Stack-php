@@ -47,3 +47,15 @@
   bottom: 0;
   width: 300px;
 }
+/* CSS for the zoom effect */
+.image-container {
+  overflow: hidden;
+}
+
+.image-zoom {
+  transition: transform 0.3s ease-in-out;
+}
+
+.image-zoom:hover {
+  transform: scale(1.1);
+}

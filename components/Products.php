@@ -60,10 +60,12 @@ use App\Url;
                             $images = explode(",", $row['images']);
                     ?>
                             <div class="products-card">
-                                <img class="h-25" alt="Product-img" src="assets/products/<?= strlen($images[0]) ? $images[0] : "noimage.png" ?>" alt="...">
+                                <div class="image-container">
+                                    <img class="image-zoom" alt="Product-img" src="assets/products/<?= strlen($images[0]) ? $images[0] : "noimage.png" ?>" alt="...">
+                                </div>
                                 <div class="card-body mt-3">
                                     <div class="col-10">
-                                        <a class="text-decoration-none text-center text-capitalize" href='<?= Url::link('pages/Products/ProductDetails.php') . '?id=' . $row['id']; ?>'>
+                                        <a class="text-decoration-none text-center text-capitalize" href='<?= Url::link('pages/Products/ProductDetail.php') . '?id=' . $row['id']; ?>'>
                                             <h5 class="card-title "><?= $row['name']; ?></h5>
                                         </a>
                                     </div>
