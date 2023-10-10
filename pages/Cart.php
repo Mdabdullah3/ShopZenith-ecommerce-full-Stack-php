@@ -1,5 +1,5 @@
 <?php
-$title = "Blogs.";
+$title = "Cart.";
 $style = "../assets/css/style.css";
 $img = "../assets/images/cart.svg";
 include "../shared/navbar.php" ?>

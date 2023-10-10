@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $conn->query($q);
         if ($conn->affected_rows) {
             $message = "User Registered Successfully";
-            header("location: " . Url::link('/index.php'));
+            header("location: " . Url::link('Login.php'));
         }
     }
 }
@@ -100,7 +100,7 @@ include "../shared/navbar.php" ?>
                     if (isset($message)) {
                     ?>
                         <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                            <strong>Success!</strong> <?= $message; ?>
+                            <strong>Error !</strong> <?= $message; ?>
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                         </div>
                     <?php

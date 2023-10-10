@@ -21,7 +21,7 @@ include "head.php" ?>
         include "../inc/sidebar.php" ?>
         <!-- Main  -->
         <main class="main-panel mt-5 mx-5">
-            <!-- <?php include "../../shared/message.php"; ?> -->
+            <?php include "../../shared/message.php"; ?>
             <div class="d-flex justify-content-between my-4">
                 <h3>Products Management</h3>
                 <a class="btn btn-outline-primary px-3 pb-2" href="productAdd.php"> Add <i class="bi bi-plus fs-5"></i></a>

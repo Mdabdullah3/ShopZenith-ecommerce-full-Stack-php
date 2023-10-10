@@ -28,6 +28,8 @@ Authe::AdminCheck();
             <?php $img = "../assets/images/face1.jpg";
             include "inc/sidebar.php" ?>
             <div class="main-panel">
+                <?php include "../shared/message.php" ?>
+
                 <div class="content-wrapper">
                     <div class="page-header">
                         <h3 class="page-title">
@@ -129,6 +131,7 @@ Authe::AdminCheck();
     <script src="../assets/js/off-canvas.js"></script>
     <script src="../assets/js/misc.js"></script>
     <script src="../assets/js/dashboard.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 </body>
 
 </html>

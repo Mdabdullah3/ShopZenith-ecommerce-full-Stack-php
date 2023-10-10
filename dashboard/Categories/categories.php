@@ -23,7 +23,7 @@ include "head.php" ?>
         include "../inc/sidebar.php" ?>
         <!-- Main  -->
         <main class="main-panel mt-5 mx-5">
-            <!-- <?php include "inc/message.php"; ?> -->
+            <?php include "../../shared/message.php"; ?>
             <div class="d-flex justify-content-between my-4">
                 <h3>Category Management</h3>
                 <a class="btn btn-outline-primary px-4 mb-2" href="categoryAdd.php"> Add <i class="bi bi-plus fs-5"></i></a>

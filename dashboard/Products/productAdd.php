@@ -47,7 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 // image upload
                 if (isset($_FILES['images'])) {
                     $errors = [];
-                    $uploadDir = '../../assets/products/'; // Create a directory to store uploaded files
+                    $uploadDir = '../../assets/products'; // Create a directory to store uploaded files
 
                     // Loop through the uploaded files
                     foreach ($_FILES['images']['tmp_name'] as $key => $tmp_name) {

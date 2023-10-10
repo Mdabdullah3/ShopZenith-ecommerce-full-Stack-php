@@ -31,9 +31,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Redirect based on user role
             if ($row['role'] == 1) {
                 header("location: " . Url::link("/index.php"));
+                $_SESSION['message'] = "Successfully logged in";
                 exit;
             } elseif ($row['role'] == 2) {
                 header("location: " . Url::link('/dashboard'));
+                $_SESSION['message'] = "Successfully logged in";
                 exit;
             }
         } else {
