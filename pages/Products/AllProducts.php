@@ -1,7 +1,7 @@
 <?php
 // echo __DIR__;
 
-require __DIR__ . '/../vendor/autoload.php';
+require __DIR__ . '/../../vendor/autoload.php';
 
 use App\DB\Database as DB;
 use App\Auth as Auth;
@@ -25,8 +25,85 @@ $conn->close();
 
 use App\Url;
 ?>
+
+<?php $title = "All Products";
+$style = "../../assets/css/style.css";
+$img = "../../assets/images/cart.svg";
+include "../../shared/navbar.php" ?>
+
+<style>
+    .products-area {
+        width: 90%;
+        margin: auto;
+    }
+
+    .products {
+        width: 98%;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+    .products-card {
+        width: 300px;
+        background-color: #fff;
+        margin: auto;
+        height: 520px;
+        position: relative;
+        border-radius: 20px;
+        margin-bottom: 20px;
+    }
+
+    .products-card img {
+        width: 275px;
+        height: 300px !important;
+        margin-left: 10px;
+    }
+
+
+
+    .cart-btn {
+        position: absolute;
+        bottom: 0;
+        width: 300px;
+    }
+
+    /* CSS for the zoom effect */
+    .image-container {
+        overflow: hidden;
+    }
+
+    .image-zoom {
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .stock {
+        position: absolute;
+        top: -20px;
+        right: 0;
+        font-size: 16px;
+        background-color: #3b5d50;
+        padding: 15px 30px;
+        color: white;
+        border-radius: 100px;
+    }
+
+    .stock-out {
+        position: absolute;
+        top: -20px;
+        right: 0;
+        font-size: 16px;
+        background-color: #fb7b4c;
+        padding: 15px 30px;
+        color: white;
+        border-radius: 100px;
+    }
+</style>
 <div class="product-section font-monospace">
-    <div class="products-area">
+    <div class="w-50 mx-auto" style="margin-top: -60px; margin-bottom: 80px">
+        <input type="search" placeholder="Search Your Products .." aria-describedby="button-addon1" class="form-control border-0 bg-light">
+    </div>
+    <div class="products-area mt-5">
         <div class="row">
             <!-- Start Column 1 -->
             <div class="col-3">
@@ -61,7 +138,7 @@ use App\Url;
                     ?>
                             <div class="products-card">
                                 <div class="image-container">
-                                    <img class="image-zoom" alt="Product-img" src="assets/products/<?= strlen($images[0]) ? $images[0] : "noimage.png" ?>" alt="...">
+                                    <img class="image-zoom" alt="Product-img" src="../../assets/products/<?= strlen($images[0]) ? $images[0] : "noimage.png" ?>" alt="...">
                                 </div>
                                 <div class="card-body mt-3">
                                     <div class="col-10">
@@ -70,10 +147,9 @@ use App\Url;
                                         </a>
                                     </div>
                                 </div>
-                                <h1 class="stcok <?= $row['status'] == 1 ? 'stock' : 'stock-out' ?>">
+                                <h1 class="<?= $row['status'] == 1 ? 'stock' : 'stock-out' ?>">
                                     <?= $row['status'] == 1 ? 'Stock' : 'Stock Out' ?>
                                 </h1>
-
                                 <div class="text-center">
                                     <h5><span class="text-black">Price-</span> $<?= $row['sprice'] ?></h5>
                                 </div>
@@ -90,3 +166,6 @@ use App\Url;
         </div>
     </div>
 </div>
+
+<?php $img = "../../assets/images/sofa.png";
+include "../../shared/footer.php" ?>

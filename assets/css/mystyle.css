@@ -42,6 +42,9 @@
   color: white;
   border-radius: 100px;
 }
+.stock-out {
+  background-color: #fb7b4c;
+}
 .cart-btn {
   position: absolute;
   bottom: 0;

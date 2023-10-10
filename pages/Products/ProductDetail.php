@@ -47,7 +47,7 @@ include "../../shared/navbar.php" ?>
                         $imageUrl = '../../assets/images/no-img.webp';
                     }
                     ?>
-                    <a class="rounded-4" data-lightbox="gallery" href="<?= $imageUrl ?>">
+                    <a class="rounded-4" href="<?= $imageUrl ?>" data-lightbox="gallery">
                         <img id="largeImage" style="width: 350px; height: 300px; margin: auto;" class="rounded-4 fit" src="<?= $imageUrl ?>" alt="<?= $filename ?>" />
                     </a>
                 </div>
@@ -131,9 +131,13 @@ include "../../shared/navbar.php" ?>
 include "../../shared/footer.php" ?>
 <script>
     $(document).ready(function() {
-        $('[data-lightbox="gallery"]').lightbox();
-        $('.small-image').click(function(e) {
-            e.preventDefault();
+        lightbox.option({
+            'resizeDuration': 200,
+            'wrapAround': true
+        });
+
+        // Handle small image clicks
+        $('.small-image').click(function() {
             var newImageSrc = $(this).attr('href');
             $('#largeImage').attr('src', newImageSrc);
         });

@@ -16,8 +16,9 @@ $user = Authe::User();
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.1/css/lightbox.min.css" rel="stylesheet">
     <link href="<?= $style ?>" rel="stylesheet" />
+    <link rel="stylesheet" href="<?php $myStyle ?>">
     <title><?= $title ?></title>
-
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -35,7 +36,7 @@ $user = Authe::User();
                     <li class="nav-item active">
                         <a class="nav-link" href="<?= Url::link('index.php'); ?>">Home</a>
                     </li>
-                    <li><a class="nav-link" href="shop.html">Shop</a></li>
+                    <li><a class="nav-link" href="<?= Url::link('pages/Products/AllProducts.php'); ?>">Shop</a></li>
 
 
                     <li><a class="nav-link" href="<?= Url::link('pages/Blog.php'); ?>">Blog</a></li>
@@ -59,7 +60,7 @@ $user = Authe::User();
                     }
                     ?>
                     <li>
-                        <a class="nav-link" href="cart.html"><img src=<?= $img; ?> /></a>
+                        <a class="nav-link" href="<?= Url::link('pages/Cart.php'); ?>"><img src=<?= $img; ?> /></a>
                     </li>
                 </ul>
             </div>
