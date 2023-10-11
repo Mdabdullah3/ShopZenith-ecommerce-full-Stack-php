@@ -52,6 +52,7 @@ use App\Url;
                 </div>
             </div>
 
+
             <div class="col-9">
                 <div class="products">
                     <?php
@@ -61,7 +62,9 @@ use App\Url;
                     ?>
                             <div class="products-card">
                                 <div class="image-container">
-                                    <img class="image-zoom" alt="Product-img" src="assets/products/<?= strlen($images[0]) ? $images[0] : "noimage.png" ?>" alt="...">
+                                    <a href='<?= Url::link('pages/Products/ProductDetail.php') . '?id=' . $row['id']; ?>'>
+                                        <img class="image-zoom" alt="Product-img" src="assets/products/<?= strlen($images[0]) ? $images[0] : "noimage.png" ?>" alt="...">
+                                    </a>
                                 </div>
                                 <div class="card-body mt-3">
                                     <div class="col-10">
